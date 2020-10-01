@@ -1,0 +1,330 @@
+<!DOCTYPE HTML>
+<html xml:lang="en" lang="en">
+<head>
+  <title>CSC 196V  Assignment 2</title>
+  <style>
+* { padding: 0; margin: 0; }
+
+body {
+  margin: 0 auto 0 auto;
+  padding: 0;
+  background-color: #33333f;
+  width: 840px;
+  font-family: "Avenir", "Avenir Next", Helvetica Neue, Arial;
+  font-size: 0.95em;
+}
+
+a, a:visited { text-decoration: none; color: #7533f4; }
+a:hover { text-decoration: underline; color: #f4b014; }
+img, a.img, a:hover.img { border: none; }
+
+img {
+  max-width: 800px;
+}
+
+h1, h2, h3, h4, h5 {
+  color: #492a7c;
+  background-color: inherit;
+  font-weight: normal;
+  padding: 0 0 5px 0;
+  margin: 15px 0 0 0;
+  border: none;
+  clear: right;
+}
+h1 { font-size: 18pt; margin:  5px 0 10px 0; line-height: 28px; }
+h2 { font-size: 14pt; margin: 30px 0 15px 0; letter-spacing: 0.01em; border-bottom: 1px solid #ccc;  line-height: 20px;}
+h3 { font-size: 13pt; }
+h4 { font-size: 12pt; }
+h5 { font-size: 11pt; }
+p { margin: 0 0 10px 0; }
+hr { border: 0px; border-top: 1px solid #ccc; height: 0px; }
+ol { margin: 1em; }
+
+.content {
+  margin: 0;
+  padding: 15px 20px;
+  background-color: #ffffff;
+}
+
+.article {
+  line-height: 1.5em;
+}
+
+.entry  {
+  border-top: 1px solid #ddd;
+  padding-top: 2px;
+  margin-top: 3em;
+}
+  </style>
+</head>
+
+<body>
+<div class='content'>
+
+<section>
+  <h1>Assignment 2: Exploratory Data Analysis</h1>
+
+  <p>
+    <strong>Himanshu Chauhan</strong>
+  </p>
+</section>
+
+<section>
+  <h2>Dataset</h2>
+
+  <p>
+    The Yelp dataset is a subset of Yelp businesses, reviews, and user data. Yelp has provided this open dataset for use in personal, educational, and academic purposes.
+    This is a huge dataset which containts:<br/>
+    1)  <b>6,685,900 reviews</b> given by Yelp users<br/>
+    2)  <b> 192,609 businesses</b> that are registered on Yelp<br/>
+	3)  <b>200,000 pictures </b>posted by the users<br/>
+	4)  10 Metropoliton Areas <br/>
+	5)  <b>1,223,094 tips</b> by 1,637,138 users<br/>
+	6)  Aggregated check-ins over time and other data for each of the 192,609 businesses<br/>
+	7)  <b>1,637,138 Yelp users</b> (Yelpers) and their data like number of fans, review counts and many others. <br/> <br/>
+     
+	I chose this dataset as I fould it very interesting and challenging. This datatset not
+	only contains years, names, dates, review counts but also actual reviews (text) given by the users along with 
+    photographs added in some comments. I wanted to understand the data as much as possible and try to 
+    create some visualizations for every file.<br/><br/>
+	The yelp dataset contains 6 Json Files:<br/>
+	1)  <b>business.json</b> - Contains business data including location data, attributes, and categories.<br/>
+	2)  <b>review.json</b> - Contains full review text data including the user_id that wrote the review and the business_id the review is written for. <br/>
+	3)  <b>user.json</b> - User data including the user's friend mapping and all the metadata associated with the user<br/>
+	4)  <b> checkin.json</b> - Checkins on a business. <br/>
+	5)  <b>tip.json</b> - Tips written by a user on a business. Tips are shorter than reviews and tend to convey quick suggestions.<br/>
+	6)  <b>photo.json</b> -Contains photo data including the caption and classification (one of "food", "drink", "menu", "inside" or "outside"). <br/>
+  </p>
+
+  <p>
+    The data is available online at:
+    <strong>
+      <a href="https://www.yelp.com/dataset">DATASET-URL-HERE</a>
+    </strong>
+  </p>
+</section>
+
+<section>
+  <h2>Initial Analysis Questions</h2>
+  <ol>
+    <li>What is the structure of every Json file in the dataset and how are they connected with each other?</li>
+	<li>What are thr types of businesses in yelp dataset and how are they ranked/rated?</li>
+	<li>Where are these businesses located? </li>
+    <li>Which businesses categories are most/least reviewed by customers? </li>
+    <li>How many and businesses in California are on Yelp and what are their ratings? </li>
+	<li>What are the most common words used in the comments posted for 5 star vs 1 star rated businesses?</li>
+	<li>Where are the top rated Yelp dataset businneses located?</li>
+	<li>Who are the top users of Yelp and how many reviews have they posted?</li>
+	<li>For which categories the users have posted photos in their review comments?</li>
+  </ol>
+</section>
+
+<section>
+  <h2>Discoveries &amp; Insights</h2>
+  <p> Below are the Discoveries and Insights about the Yelp dataset</p>
+  
+  
+  <div class="entry">
+    <h2  align="center" > <b> <font color="maroon"> Businesses Count </font> </b> </h2>
+     <h3> Count of total number of Open and Closed Business</h3>
+      <img src="Open_Businesses.PNG"/>
+      <p class="caption">
+      <b> Note: Out of total 192,609 businesses more than 150000 are Open and more than 35000 are Closed.</b></br></br> 
+      <p> Description: After understanding the dataset I found that there are some businesses which are closed.
+          Here is the count of both open and closed businesses. </p>
+    </div>
+  
+  
+  
+   <div class="entry">
+    <h2  align="center" > <b> <font color="maroon"> Businesses Locations </font> </b> </h2> 
+    <h3> Total number of businesses located at different states in the United States</h3>
+      <img src="Open_business_statewise.PNG" />
+	  <p class="caption">
+      <b>Note: Nevada and Arizona are the states with maximum number of businesses.</b>
+     </p>
+   </div>
+   
+   
+   
+   <div class="entry">
+	<h3> Top 35 Cities with Maximum Number of Business </h3>
+    <img src="Top_35_cities_with_max_businesses.PNG" />
+	<p><b> Wow! Las Vegas has the maximum number of businesses.</b> </br>
+	 Description:  I have selected Top 35 cities with maximum number of businesses in the dataset.
+      Each bar in the above visualization represents the total number of businesses in that city.	</p>
+   </div>
+   
+   
+   
+	<div class="entry">
+	<h3> Lets Dive Deeper! </h3>
+	 <h3> How many businesses are there in California and what are their Ratings?</h3>
+      <img src="California_all_businesses_with_Rating.PNG" />
+	  <p class="caption"> 
+	  <b> Out of 19 businesses 14 are highly rated (Star Rating >= 4) .</b>
+	  <p> Description: There were total 19 businesses in state California. </p>
+	  </p>
+    </div>
+
+  
+  
+  <div class="entry">
+  <h2  align="center" > <b> <font color="maroon"> Star - Rating Distribution </font> </b> </h2> 
+  <h3> Count of Each Star Rating given for all the businesses by the users</h3>
+    <img src="star_distribution.PNG" />
+    <p class="caption">
+    Note : In General <b> 4-Star-Rating</b> is the most frequent star rating given by the users. </br>
+	<p> Description: Each bar represents the total number of star count for all the businesses
+	given by all the users in the yelp dataset. </p>
+    </p>
+  </div>
+
+  
+  <div class="entry">
+  <h2  align="center" > <b> <font color="maroon"> The most frequent words used in the reviews posted for each star rating </font> </b> </h2> 
+  
+  <h4> <b> 1 - Star </b></h4>
+    <img src="1-stars.PNG" />
+	<h4> <b> 2 - Star </b></h4>
+    <img src="2-stars.PNG" />
+	<h4> <b> 3 - Star </b></h4>
+    <img src="3-stars.PNG" />
+	<h4> <b> 4 - Star </b></h4>
+    <img src="4_stars.PNG" />
+	<h4> <b> 5 - Star </b></h4>
+    <img src="5-stars.PNG" />
+    <p class="caption">
+    These are the most frequent words used by the yelp users in their comments for each star rating.
+    </p>
+  </div>
+
+  
+  <div class="entry">
+  <h2  align="center" > <b> <font color="maroon"> Business Categories with Maximum Number Of reviews
+ </font> </b> </h2> 
+    <img src="Categories_circles.PNG" />
+    <p class="caption">
+    Note: The business category which has recieved maximum number of reviews is - <b>Restaurants </b></br>
+	<b>   The larger the circle the greater the review count </b> </br>
+	<p> Description:  The above visualization represents the business categories with increasing number
+        of reviews given by the yelp users. These are the categories for which users have posted more comments.
+        Restaurants, Food, Shopping, Bars, Nightlife, Automotive, Japanese, Beauty and Spa are some of the top ones.		</p>
+    </p>
+  </div>
+
+  
+  <div  class="entry">
+  <h2  align="center" > <b> <font color="maroon">  Most Famous Business Categories in United States</font> </b> </h2>
+   <h3> Which are the top  business Categories with maximum number of reviews??</h3>
+    <img src="Pie_chart_categories_top200.PNG" />
+   <p class="caption">
+    
+	Description: The above pie chart represents the top 7 business categories along with the total number of reviews recieved.
+    </p>
+  </div>
+
+  <div class="entry">
+   
+   <h3> Where are these businesses located in the United States?</h3>
+    <img src="top_200 Reviewed businneses per city.PNG" />
+	<p class="caption">
+    <p> Description: I have filtered out top business categories with maximum number of reviews count(top 200).
+                      These are located in 5 states ( Descending order) : Arizona, Nevada, North Carolina, Pennsylvania and Wisconsin. 	</p>
+    </p>
+    </p>
+   </div>
+   
+   <div  class="entry">
+   <h2  align="center" > <b> <font color="maroon"> Some Statictics about the above visualization</font> </b> </h2>
+    <img src="Box_plot__most_reviewed.PNG"/>
+	<p class="caption">
+    Description: The above box plot also shows the city names (in every state) with minimum and maximum number of review count.
+	For example, <b> Las Vegas </b> in Nevada has the maximun number of reviews (373,017) while "Spring Valley" has the minimum reviews 
+	for the top reviewed business categories.
+    </p>
+	
+	</div>
+	
+	
+  
+  <div class="entry">
+  <h2  align="center" > <b> <font color="maroon"> Which is the most busy day of the week? </font> </b> </h2>
+  <h3>  </h3>
+    <img src="Checkin_weekday.PNG" />
+    <p class="caption">
+    <b> As Expected, its Saturday!</b>    </p>
+	<p class="caption">
+    Description: The above graph represents the total number of check-ins reported for each day of the week at various businesses.
+    </p>
+  </div>
+
+  
+  <div class="entry">
+  <h2  align="center" > <b> <font color="maroon"> Number of photos posted by yelp users </font> </b> </h2>
+    <img src="images_for_evry_label.PNG" /></br>
+    <p class="caption">
+    Description: Every photo uploaded by the users has some label. The above bar graph represents the total number of photos
+	posted for each label. <b> "Food" label has maximum number of photos. </b>
+    </p>
+  </div>
+
+  
+  <div class="entry">
+  <h2  align="center" > <b> <font color="maroon"> Yelp Users </font> </b> </h2>
+  <h3> Who are the Top 20 YELPER !  </h3>
+    <img src="users_bubble_count.PNG" />
+    <p class="caption">
+    Description:  The above visualization represents the names of 20 most frequent and elite users of Yelp.
+	<b> The larger the bubble the greater the reviews posted by the user. "Victor" has posted the maximum number of reviews(13,278)! </b>	
+    </p>
+  </div>
+
+  
+  <div class="entry">
+  <h3> Since when have these top 20 users been YELPING? </h3>
+    <img src="Years_of_yelping.PNG" />
+    <p class="caption">
+    Description: The above visualization shows the years since these top 20 yelp users have been active. For example, Victor has been yelping
+	 since 2007, while Bruce has been using yelp since 2009.
+    </p>
+  </div>
+  
+    <div class="entry">
+  <h3> What is the average number of reviews posted by these top 20 users every year?</h3>
+    <img src="Yelping_since_20_users.PNG" />
+    <p class="caption">
+     Notice that, 2009 was the year with maximum number of reviews posted by these users. The trend line is upwards for this graph.
+    </p>
+  </div>
+  
+    <div class="entry">
+  <h3> Top 20 Yelpers : Number of fans vs Number of review count posted by each user</h3>
+    <img src="user_fan.PNG" />
+    <p class="caption">
+    Description: The above graph shows the total number of fans each top 20 user has. It also shows the total number of reviews
+	posted by each. <b> Ed has maximum number of fans on yelp. </b>
+    </p>
+  </div>
+  
+  
+   
+
+  
+  <div class="entry">
+    <h3>Summary</h3>
+    <p>
+     The above visualizations have shown the general as well as some detailed view of the Yelp dataset.
+	 This was my first Exploratory Data Analysis experience. I have learned new thing during the process.
+	 I used tableau and matplotlib(python library) for this assignment.</br></br>
+	 Yelp dataset is huge with many files. Data anaysis and data cleaning took the most time. There were some null values which I cleaned using
+	 Python. Also, I merged and grouped( on Business ID) together the review and business files. I have tried to used different 
+	 visuaization like maps, graphs, bars, boxplots, bubble charts to understand the data better. I am able to find answers 
+	 to most of the questions I had put up in the beginning, however, there's still more to learn!
+    </p>
+  </div>
+</section>
+
+</div>
+</body>
+</html>
